@@ -46,7 +46,6 @@ import rx.schedulers.Schedulers;
  */
 public class AppInfoFragment extends Fragment {
 
-
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @Bind(R.id.swipeRefreshLayout)
@@ -54,7 +53,6 @@ public class AppInfoFragment extends Fragment {
 
     private File mFilesDir;
     private AppInfoAdapter mAdapter;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
@@ -67,9 +65,11 @@ public class AppInfoFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mAdapter = new AppInfoAdapter(new ArrayList<>(), R.layout.appinfo_list_item);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setVisibility(View.GONE);
 
         mSwipeRefreshLayout.setEnabled(true);
         mSwipeRefreshLayout.setRefreshing(true);
@@ -84,14 +84,12 @@ public class AppInfoFragment extends Fragment {
             }
         });
 
-        mRecyclerView.setVisibility(View.GONE);
-
         getFileDir().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<File>() {
                     @Override
                     public void call(File file) {
-                        XLog.d("getFilesDir subscribe : " + file.getAbsolutePath());
+                        XLog.d("getFilesDir subscribe call : " + file.getAbsolutePath());
                         mFilesDir = file;
                         refreshTheList();
                     }
@@ -102,7 +100,7 @@ public class AppInfoFragment extends Fragment {
         return Observable.create(new Observable.OnSubscribe<File>() {
             @Override
             public void call(Subscriber<? super File> subscriber) {
-                XLog.d("getFilesDir Observable : " + App.instance.getFilesDir());
+                XLog.d("getFilesDir Observable call : " + App.instance.getFilesDir());
                 subscriber.onNext(App.instance.getFilesDir());
                 subscriber.onCompleted();
             }
@@ -120,15 +118,15 @@ public class AppInfoFragment extends Fragment {
 
             @Override
             public void onError(Throwable e) {
-                XLog.e(e);
                 XLog.d("getApps subscribe onError");
+                XLog.e(e);
                 Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void onNext(List<AppInfo> appInfoList) {
-                XLog.d("getApps subscribe : " + appInfoList.toString());
+                XLog.d("getApps subscribe onNext : " + appInfoList.toString());
                 mRecyclerView.setVisibility(View.VISIBLE);
                 mAdapter.addAppInfoList(appInfoList);
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -143,7 +141,7 @@ public class AppInfoFragment extends Fragment {
         Schedulers.io().createWorker().schedule(new Action0() {
             @Override
             public void call() {
-                XLog.d("storeList schedule : " + appInfoList.toString());
+                XLog.d("storeList schedule call : " + appInfoList.toString());
                 SharedPreferences sp = getActivity().getPreferences(Context.MODE_PRIVATE);
                 Type appInfoType = new TypeToken<List<AppInfo>>() {
                 }.getType();
@@ -171,7 +169,7 @@ public class AppInfoFragment extends Fragment {
                 if (subscriber.isUnsubscribed()) {
                     return;
                 }
-                XLog.d("getApps Observable : " + name);
+                XLog.d("getApps Observable onNext : " + name);
                 subscriber.onNext(new AppInfo(appInfoRich.getLastUpdateTime(), name, iconPath));
             }
             if (!subscriber.isUnsubscribed()) {

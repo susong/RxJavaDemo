@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.dream.rxjava.chapter3.AppInfoFragment;
+import com.dream.rxjava.chapter3.AppInfoFragment2;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerCallbacks;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerFragment;
 
@@ -53,9 +54,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                         .commit();
                 break;
             case 1:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new SecondExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new AppInfoFragment2())
+                        .commit();
                 break;
             case 2:
 //                fragmentManager.beginTransaction()

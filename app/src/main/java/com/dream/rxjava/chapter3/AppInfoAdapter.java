@@ -67,7 +67,7 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoAdapter.ViewHold
                 .subscribe(new Action1<Bitmap>() {
                     @Override
                     public void call(Bitmap bitmap) {
-                        XLog.d("setBitmap : " + appInfo.getIcon());
+                        XLog.d("setBitmap call : " + appInfo.getIcon());
                         holder.mImage.setImageBitmap(bitmap);
                     }
                 });
@@ -77,7 +77,7 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoAdapter.ViewHold
         return Observable.create(new Observable.OnSubscribe<Bitmap>() {
             @Override
             public void call(Subscriber<? super Bitmap> subscriber) {
-                XLog.d("getBitmap : " + icon);
+                XLog.d("getBitmap call : " + icon);
                 subscriber.onNext(BitmapFactory.decodeFile(icon));
                 subscriber.onCompleted();
             }
