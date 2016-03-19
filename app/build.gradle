@@ -35,21 +35,35 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions{
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:support-v4:23.2.1'
     compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.android.support:cardview-v7:23.2.1'
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.1.0'
     compile 'org.projectlombok:lombok:1.16.8'
     compile 'com.jakewharton:butterknife:7.0.1'
+
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.0'
-    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-design:0.4.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0'
+    compile 'io.reactivex:rxjava-joins:0.22.0'
+
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.google.code.gson:gson:2.4'
+
+    compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
+    compile 'com.github.rey5137:material:1.0.0'
+
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
+
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
 
 }

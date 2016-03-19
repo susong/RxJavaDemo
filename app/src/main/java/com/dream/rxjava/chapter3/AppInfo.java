@@ -13,16 +13,17 @@ import lombok.experimental.Accessors;
  * Description: RxJavaDemo
  */
 @Data
+@Accessors(prefix = "m")
 public class AppInfo implements Comparable<AppInfo> {
 
-    long lastUpdateTime;
-    String name;
-    String icon;
+    long mLastUpdateTime;
+    String mName;
+    String mIcon;
 
     public AppInfo(long lastUpdateTime, String name, String icon) {
-        this.lastUpdateTime = lastUpdateTime;
-        this.name = name;
-        this.icon = icon;
+        this.mLastUpdateTime = lastUpdateTime;
+        this.mName = name;
+        this.mIcon = icon;
     }
 
     @Override

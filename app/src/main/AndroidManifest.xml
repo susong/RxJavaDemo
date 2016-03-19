@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".chapter2.ObservableActivity"/>
-        <activity android:name=".chapter3.AppInfoActivity"/>
     </application>
 
 </manifest>

@@ -1,6 +1,12 @@
 package com.dream.rxjava;
 
 import android.app.Application;
+import android.content.Context;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 /**
  * Author:      SuSong
@@ -11,8 +17,23 @@ import android.app.Application;
  */
 public class App extends Application {
 
+    public static Context instance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
+
+        DisplayImageOptions defaultOptions =
+                new DisplayImageOptions.Builder().showImageOnFail(R.drawable.ic_launcher)
+                        .showImageOnLoading(R.drawable.ic_launcher)
+                        .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+                        .cacheInMemory(true)
+                        .cacheOnDisk(true)
+                        .build();
+        ImageLoaderConfiguration config =
+                new ImageLoaderConfiguration.Builder(getApplicationContext()).defaultDisplayImageOptions(
+                        defaultOptions).build();
+        ImageLoader.getInstance().init(config);
     }
 }
