@@ -35,7 +35,7 @@ public class ObservableActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_observable);
 
         mSubscriber = new Subscriber<String>() {
 
@@ -56,7 +56,7 @@ public class ObservableActivity extends AppCompatActivity {
             }
         };
 
-        demo9();
+        demo8();
     }
 
     private void demo9() {
@@ -83,6 +83,7 @@ public class ObservableActivity extends AppCompatActivity {
     }
 
     private void demo8() {
+        // 要先订阅后发送消息，才能收到，否则收不到
         PublishSubject<String> subject = PublishSubject.create();
         subject.subscribe(mSubscriber);
         subject.onNext("Hello");

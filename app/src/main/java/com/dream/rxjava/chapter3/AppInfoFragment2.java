@@ -56,17 +56,12 @@ public class AppInfoFragment2 extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setVisibility(View.GONE);
 
-        mSwipeRefreshLayout.setEnabled(true);
+        mSwipeRefreshLayout.setEnabled(false);
         mSwipeRefreshLayout.setRefreshing(true);
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.myPrimaryColor));
         mSwipeRefreshLayout.setProgressViewOffset(false, 0,
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24,
                         getResources().getDisplayMetrics()));
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-            }
-        });
 
         List<AppInfo> appInfoList = AppInfoList.getInstance().getList();
         loadList(appInfoList);
