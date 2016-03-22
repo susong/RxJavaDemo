@@ -76,15 +76,15 @@ public class AppInfoFragment3 extends Fragment {
 
         AppInfo appThree = appInfoList.get(24);
 
-        loadListJust(appOne, appTwo, appThree);
-//        loadListRepeat(appOne, appTwo, appThree);
+        just(appOne, appTwo, appThree);
+//        repeat(appOne, appTwo, appThree);
 //        defer();
 //        range();
 //        interval();
 //        timer();
     }
 
-    private void loadListJust(AppInfo appOne, AppInfo appTwo, AppInfo appThree) {
+    private void just(AppInfo appOne, AppInfo appTwo, AppInfo appThree) {
         mRecyclerView.setVisibility(View.VISIBLE);
         Observable.just(appOne, appTwo, appThree)
                 .subscribe(new Subscriber<AppInfo>() {
@@ -112,7 +112,7 @@ public class AppInfoFragment3 extends Fragment {
                 });
     }
 
-    private void loadListRepeat(AppInfo appOne, AppInfo appTwo, AppInfo appThree) {
+    private void repeat(AppInfo appOne, AppInfo appTwo, AppInfo appThree) {
         mRecyclerView.setVisibility(View.VISIBLE);
         Observable.just(appOne, appTwo, appThree)
                 .repeat(3)

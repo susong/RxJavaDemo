@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import com.dream.rxjava.chapter3.AppInfoFragment;
 import com.dream.rxjava.chapter3.AppInfoFragment2;
 import com.dream.rxjava.chapter3.AppInfoFragment3;
+import com.dream.rxjava.chapter4.DebounceExampleFragment;
+import com.dream.rxjava.chapter4.FilterExampleFragment;
+import com.dream.rxjava.chapter4.TakeExampleFragment;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerCallbacks;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerFragment;
 
@@ -65,19 +68,25 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                         .commit();
                 break;
             case 3:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new FilterExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new FilterExampleFragment())
+                        .commit();
                 break;
             case 4:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new TakeExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new TakeExampleFragment())
+                        .commit();
                 break;
             case 5:
-//                fragmentManager.beginTransaction()
+                fragmentManager.beginTransaction()
 //                        .replace(R.id.container, new DistinctExampleFragment())
-//                        .commit();
+//                        .replace(R.id.container, new FirstLastExampleFragment())
+//                        .replace(R.id.container, new SkipExampleFragment())
+//                        .replace(R.id.container, new ElementAtExampleFragment())
+//                        .replace(R.id.container, new SamplingThrottleExampleFragment())
+//                        .replace(R.id.container, new TimeoutExampleFragment())
+                        .replace(R.id.container, new DebounceExampleFragment())
+                        .commit();
                 break;
             case 6:
 //                fragmentManager.beginTransaction()
