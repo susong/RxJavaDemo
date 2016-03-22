@@ -9,9 +9,12 @@ import android.support.v7.widget.Toolbar;
 import com.dream.rxjava.chapter3.AppInfoFragment;
 import com.dream.rxjava.chapter3.AppInfoFragment2;
 import com.dream.rxjava.chapter3.AppInfoFragment3;
-import com.dream.rxjava.chapter4.DebounceExampleFragment;
+import com.dream.rxjava.chapter4.DistinctExampleFragment;
 import com.dream.rxjava.chapter4.FilterExampleFragment;
 import com.dream.rxjava.chapter4.TakeExampleFragment;
+import com.dream.rxjava.chapter5.GroupByExampleFragment;
+import com.dream.rxjava.chapter5.MapExampleFragment;
+import com.dream.rxjava.chapter5.ScanExampleFragment;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerCallbacks;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerFragment;
 
@@ -79,29 +82,31 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                 break;
             case 5:
                 fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new DistinctExampleFragment())
+                        .replace(R.id.container, new DistinctExampleFragment())
 //                        .replace(R.id.container, new FirstLastExampleFragment())
 //                        .replace(R.id.container, new SkipExampleFragment())
 //                        .replace(R.id.container, new ElementAtExampleFragment())
 //                        .replace(R.id.container, new SamplingThrottleExampleFragment())
 //                        .replace(R.id.container, new TimeoutExampleFragment())
-                        .replace(R.id.container, new DebounceExampleFragment())
+//                        .replace(R.id.container, new DebounceExampleFragment())
                         .commit();
                 break;
             case 6:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new MapExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new MapExampleFragment())
+//                        .replace(R.id.container, new FlatMapExampleFragment())
+//                        .replace(R.id.container, new ConcatMapExampleFragment())
+                        .commit();
                 break;
             case 7:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new ScanExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new ScanExampleFragment())
+                        .commit();
                 break;
             case 8:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new GroupByExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new GroupByExampleFragment())
+                        .commit();
                 break;
             case 9:
 //                fragmentManager.beginTransaction()
