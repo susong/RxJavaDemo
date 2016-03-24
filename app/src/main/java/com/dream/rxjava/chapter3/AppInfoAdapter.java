@@ -70,6 +70,7 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoAdapter.ViewHold
                         holder.mImage.setImageBitmap(bitmap);
                     }
                 });
+//        holder.mImage.setImageBitmap(BitmapFactory.decodeFile(appInfo.getIcon()));
     }
 
     private Observable<Bitmap> getBitmap(String icon) {

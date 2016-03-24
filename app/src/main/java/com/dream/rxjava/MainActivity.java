@@ -2,6 +2,7 @@ package com.dream.rxjava;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,13 @@ import com.dream.rxjava.chapter4.TakeExampleFragment;
 import com.dream.rxjava.chapter5.GroupByExampleFragment;
 import com.dream.rxjava.chapter5.MapExampleFragment;
 import com.dream.rxjava.chapter5.ScanExampleFragment;
+import com.dream.rxjava.chapter6.AndThenWhenExampleFragment;
+import com.dream.rxjava.chapter6.CombineLatestExampleFragment;
+import com.dream.rxjava.chapter6.JoinExampleFragment;
+import com.dream.rxjava.chapter6.MergeExampleFragment;
+import com.dream.rxjava.chapter6.ZipExampleFragment;
+import com.dream.rxjava.chapter7.LongTaskFragment;
+import com.dream.rxjava.chapter7.SharedPreferencesListFragment;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerCallbacks;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerFragment;
 
@@ -49,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         mNavigationDrawerFragment =
                 (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.fragment_drawer);
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, mDrawer, mToolbar);
+
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
+        }
     }
 
     @Override
@@ -109,37 +122,39 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                         .commit();
                 break;
             case 9:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new MergeExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new MergeExampleFragment())
+                        .commit();
                 break;
             case 10:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new ZipExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new ZipExampleFragment())
+                        .commit();
                 break;
             case 11:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new JoinExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new JoinExampleFragment())
+                        .commit();
                 break;
             case 12:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new CombineLatestExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new CombineLatestExampleFragment())
+                        .commit();
                 break;
             case 13:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new AndThenWhenExampleFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new AndThenWhenExampleFragment())
+                        .commit();
                 break;
             case 14:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new SharedPreferencesListFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new SharedPreferencesListFragment())
+                        .commit();
                 break;
             case 15:
-//                fragmentManager.beginTransaction().replace(R.id.container, new LongTaskFragment()).commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LongTaskFragment())
+                        .commit();
                 break;
             case 16:
 //                fragmentManager.beginTransaction()
