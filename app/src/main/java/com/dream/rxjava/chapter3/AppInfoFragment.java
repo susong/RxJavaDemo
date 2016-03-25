@@ -109,7 +109,10 @@ public class AppInfoFragment extends Fragment {
 
     private void refreshTheList() {
         // toSortedList 变成列表
-        getApps().toSortedList().subscribe(new Subscriber<List<AppInfo>>() {
+        getApps()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .toSortedList().subscribe(new Subscriber<List<AppInfo>>() {
             @Override
             public void onCompleted() {
                 XLog.d("getApps subscribe onCompleted");

@@ -1,6 +1,7 @@
 package com.dream.rxjava;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.widget.DrawerLayout;
@@ -13,8 +14,8 @@ import com.dream.rxjava.chapter3.AppInfoFragment3;
 import com.dream.rxjava.chapter4.DistinctExampleFragment;
 import com.dream.rxjava.chapter4.FilterExampleFragment;
 import com.dream.rxjava.chapter4.TakeExampleFragment;
+import com.dream.rxjava.chapter5.FlatMapExampleFragment;
 import com.dream.rxjava.chapter5.GroupByExampleFragment;
-import com.dream.rxjava.chapter5.MapExampleFragment;
 import com.dream.rxjava.chapter5.ScanExampleFragment;
 import com.dream.rxjava.chapter6.AndThenWhenExampleFragment;
 import com.dream.rxjava.chapter6.CombineLatestExampleFragment;
@@ -24,6 +25,7 @@ import com.dream.rxjava.chapter6.ZipExampleFragment;
 import com.dream.rxjava.chapter7.LongTaskFragment;
 import com.dream.rxjava.chapter7.NetworkTaskFragment;
 import com.dream.rxjava.chapter7.SharedPreferencesListFragment;
+import com.dream.rxjava.chapter8.SoActivity;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerCallbacks;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerFragment;
 
@@ -107,8 +109,8 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                 break;
             case 6:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new MapExampleFragment())
-//                        .replace(R.id.container, new FlatMapExampleFragment())
+//                        .replace(R.id.container, new MapExampleFragment())
+                        .replace(R.id.container, new FlatMapExampleFragment())
 //                        .replace(R.id.container, new ConcatMapExampleFragment())
                         .commit();
                 break;
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                         .commit();
                 break;
             case 17:
-//                startActivity(new Intent(this, SoActivity.class));
+                startActivity(new Intent(this, SoActivity.class));
                 break;
         }
     }
