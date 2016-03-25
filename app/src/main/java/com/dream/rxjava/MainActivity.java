@@ -22,6 +22,7 @@ import com.dream.rxjava.chapter6.JoinExampleFragment;
 import com.dream.rxjava.chapter6.MergeExampleFragment;
 import com.dream.rxjava.chapter6.ZipExampleFragment;
 import com.dream.rxjava.chapter7.LongTaskFragment;
+import com.dream.rxjava.chapter7.NetworkTaskFragment;
 import com.dream.rxjava.chapter7.SharedPreferencesListFragment;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerCallbacks;
 import com.dream.rxjava.navigation_drawer.NavigationDrawerFragment;
@@ -157,9 +158,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                         .commit();
                 break;
             case 16:
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new NetworkTaskFragment())
-//                        .commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new NetworkTaskFragment())
+                        .commit();
                 break;
             case 17:
 //                startActivity(new Intent(this, SoActivity.class));
