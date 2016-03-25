@@ -21,14 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".chapter2.ObservableActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN"/>-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".chapter8.SoActivity"/>
+        <activity
+            android:name=".rxjavaessentials.RxJavaEssentialsActivity"
+            android:theme="@style/RxJavaEssentialsTheme"/>
+        <activity android:name=".rxjavaessentials.chapter2.ObservableActivity"/>
+        <activity android:name=".rxjavaessentials.chapter8.SoActivity"/>
+        <activity android:name=".rxjavaandroidsample.RxJavaAndroidSampleActivity"/>
     </application>
 
 </manifest>
