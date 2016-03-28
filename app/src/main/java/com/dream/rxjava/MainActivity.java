@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.dream.rxjava.rxjavaandroidsample.RxJavaAndroidSampleActivity;
 import com.dream.rxjava.rxjavaessentials.RxJavaEssentialsActivity;
-import com.dream.rxjava.rxjavaessentials.chapter8.SoActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RxJavaEssentialsActivity.class));
                 break;
             case R.id.btn_rxjava_android_sample:
-                startActivity(new Intent(this, SoActivity.class));
+                startActivity(new Intent(this, RxJavaAndroidSampleActivity.class));
                 break;
         }
     }

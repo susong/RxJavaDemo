@@ -100,8 +100,8 @@ public class AppInfoFragment extends Fragment {
         return Observable.create(new Observable.OnSubscribe<File>() {
             @Override
             public void call(Subscriber<? super File> subscriber) {
-                XLog.d("getFilesDir Observable call : " + App.instance.getFilesDir());
-                subscriber.onNext(App.instance.getFilesDir());
+                XLog.d("getFilesDir Observable call : " + App.getApp().getFilesDir());
+                subscriber.onNext(App.getApp().getFilesDir());
                 subscriber.onCompleted();
             }
         });

@@ -7,6 +7,10 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
+
+import timber.log.Timber;
 
 /**
  * Author:      SuSong
@@ -17,12 +21,24 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
  */
 public class App extends Application {
 
-    public static Context instance;
+    private static Context mContext;
+    private RefWatcher mRefWatcher;
+
+    public static App getApp() {
+        return (App) mContext;
+    }
+
+    public static RefWatcher getRefWatcher() {
+        return App.getApp().mRefWatcher;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
+        mContext = getApplicationContext();
+        mRefWatcher = LeakCanary.install(this);
+
+        Timber.plant(new Timber.DebugTree());
 
         DisplayImageOptions defaultOptions =
                 new DisplayImageOptions.Builder().showImageOnFail(R.drawable.ic_launcher)
