@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.dream.rxjava.rxjavaandroidsample.fragment.MainFragment;
+import com.dream.rxjava.rxjavaandroidsample.rxbus.RxBus;
 
 /**
  * Author:      SuSong
@@ -14,6 +15,15 @@ import com.dream.rxjava.rxjavaandroidsample.fragment.MainFragment;
  */
 public class RxJavaAndroidSampleActivity extends AppCompatActivity {
 
+    private RxBus mRxBus;
+
+    // This is better done with a DI Library like Dagger
+    public RxBus getRxBusSingleton() {
+        if (mRxBus == null) {
+            mRxBus = new RxBus();
+        }
+        return mRxBus;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

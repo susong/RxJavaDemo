@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dream.rxjava.R;
+import com.dream.rxjava.rxjavaandroidsample.rxbus.RxBusDemoFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -81,12 +82,16 @@ public class MainFragment extends BaseFragment {
                 clickedOn(new RetrofitFragment());
                 break;
             case R.id.btn_demo_double_binding_textview:
+                clickedOn(new DoubleBindingTextViewFragment());
                 break;
             case R.id.btn_demo_polling:
+                clickedOn(new PollingFragment());
                 break;
             case R.id.btn_demo_rxbus:
+                clickedOn(new RxBusDemoFragment());
                 break;
             case R.id.btn_demo_form_validation_combinel:
+                clickedOn(new FormValidationCombineLatestFragment());
                 break;
             case R.id.btn_demo_pseudo_cache:
                 break;

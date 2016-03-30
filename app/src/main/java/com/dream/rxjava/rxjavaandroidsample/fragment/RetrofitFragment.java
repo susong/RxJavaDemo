@@ -2,6 +2,8 @@ package com.dream.rxjava.rxjavaandroidsample.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +15,23 @@ import com.dream.rxjava.rxjavaandroidsample.RxUtils;
 import com.dream.rxjava.rxjavaandroidsample.retrofit.Contributor;
 import com.dream.rxjava.rxjavaandroidsample.retrofit.GithubApi;
 import com.dream.rxjava.rxjavaandroidsample.retrofit.GithubService;
+import com.dream.rxjava.rxjavaandroidsample.retrofit.User;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
+
+import static java.lang.String.format;
 
 
 /**
@@ -126,6 +134,72 @@ public class RetrofitFragment extends BaseFragment {
                 );
                 break;
             case R.id.btn_demo_retrofit_contributors_with_user_info:
+                mLogAdapter.clear();
+                mCompositeSubscription.add(
+                        mGithubService.contributors(mDemoRetrofitContributorsUsername.getText().toString(),
+                                mDemoRetrofitContributorsRepository.getText().toString())
+                                .flatMap(new Func1<List<Contributor>, Observable<Contributor>>() {
+                                    @Override
+                                    public Observable<Contributor> call(List<Contributor> contributors) {
+                                        return Observable.from(contributors);
+                                    }
+                                })
+                                .flatMap(new Func1<Contributor, Observable<Pair<User, Contributor>>>() {
+                                    @Override
+                                    public Observable<Pair<User, Contributor>> call(Contributor contributor) {
+
+                                        Observable<User> userObservable = mGithubService.user(contributor.getLogin())
+                                                .filter(new Func1<User, Boolean>() {
+                                                    @Override
+                                                    public Boolean call(User user) {
+                                                        return !TextUtils.isEmpty(user.getName()) && !TextUtils.isEmpty(user.getEmail());
+                                                    }
+                                                });
+
+                                        return Observable.zip(userObservable, Observable.just(contributor),
+                                                new Func2<User, Contributor, Pair<User, Contributor>>() {
+                                                    @Override
+                                                    public Pair<User, Contributor> call(User user, Contributor contributor) {
+                                                        return new Pair<User, Contributor>(user, contributor);
+                                                    }
+                                                });
+                                    }
+                                })
+                                .subscribeOn(Schedulers.newThread())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(new Subscriber<Pair<User, Contributor>>() {
+                                    @Override
+                                    public void onCompleted() {
+                                        Timber.d("Retrofit call 2 completed ");
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        Timber.e(e, "error while getting the list of contributors along with full " + "names");
+                                    }
+
+                                    @Override
+                                    public void onNext(Pair<User, Contributor> pair) {
+                                        User user = pair.first;
+                                        Contributor contributor = pair.second;
+
+
+                                        mLogAdapter.add(format("%s(%s) has made %d contributions to %s",
+                                                user.getName(),
+                                                user.getEmail(),
+                                                contributor.getContributions(),
+                                                mDemoRetrofitContributorsRepository.getText().toString()));
+
+                                        mLogAdapter.notifyDataSetChanged();
+
+                                        Timber.d("%s(%s) has made %d contributions to %s",
+                                                user.getName(),
+                                                user.getEmail(),
+                                                contributor.getContributions(),
+                                                mDemoRetrofitContributorsRepository.getText().toString());
+                                    }
+                                })
+                );
                 break;
         }
     }
