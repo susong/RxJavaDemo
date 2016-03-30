@@ -94,6 +94,7 @@ public class MainFragment extends BaseFragment {
                 clickedOn(new FormValidationCombineLatestFragment());
                 break;
             case R.id.btn_demo_pseudo_cache:
+                clickedOn(new PseudoCacheMergeFragment());
                 break;
             case R.id.btn_demo_timing:
                 break;

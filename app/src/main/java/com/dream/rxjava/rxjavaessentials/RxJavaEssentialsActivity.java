@@ -133,6 +133,7 @@ public class RxJavaEssentialsActivity extends AppCompatActivity implements Navig
             case 10:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new MergeExampleFragment())
+//                        .replace(R.id.container, new ConcatExampleFragment())
                         .commit();
                 break;
             case 11:

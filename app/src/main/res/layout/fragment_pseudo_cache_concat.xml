@@ -16,7 +16,7 @@
         />
 
     <ListView
-        android:id="@+id/log_list"
+        android:id="@+id/list_threading_log"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         />
