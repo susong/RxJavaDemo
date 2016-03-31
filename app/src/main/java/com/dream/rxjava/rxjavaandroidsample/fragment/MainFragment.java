@@ -66,7 +66,21 @@ public class MainFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.btn_demo_schedulers, R.id.btn_demo_buffer, R.id.btn_demo_debounce, R.id.btn_demo_retrofit, R.id.btn_demo_double_binding_textview, R.id.btn_demo_polling, R.id.btn_demo_rxbus, R.id.btn_demo_form_validation_combinel, R.id.btn_demo_pseudo_cache, R.id.btn_demo_timing, R.id.btn_demo_exponential_backoff, R.id.btn_demo_rotation_persist, R.id.btn_demo_volley})
+    @OnClick({
+            R.id.btn_demo_schedulers,
+            R.id.btn_demo_buffer,
+            R.id.btn_demo_debounce,
+            R.id.btn_demo_retrofit,
+            R.id.btn_demo_double_binding_textview,
+            R.id.btn_demo_polling,
+            R.id.btn_demo_rxbus,
+            R.id.btn_demo_form_validation_combinel,
+            R.id.btn_demo_pseudo_cache,
+            R.id.btn_demo_pseudo_cache_merge,
+            R.id.btn_demo_timing,
+            R.id.btn_demo_exponential_backoff,
+            R.id.btn_demo_rotation_persist,
+            R.id.btn_demo_volley})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_demo_schedulers:
@@ -94,11 +108,16 @@ public class MainFragment extends BaseFragment {
                 clickedOn(new FormValidationCombineLatestFragment());
                 break;
             case R.id.btn_demo_pseudo_cache:
+                clickedOn(new PseudoCacheConcatFragment());
+                break;
+            case R.id.btn_demo_pseudo_cache_merge:
                 clickedOn(new PseudoCacheMergeFragment());
                 break;
             case R.id.btn_demo_timing:
+                clickedOn(new TimingDemoFragment());
                 break;
             case R.id.btn_demo_exponential_backoff:
+                clickedOn(new ExponentialBackoffFragment());
                 break;
             case R.id.btn_demo_rotation_persist:
                 break;
