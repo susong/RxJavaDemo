@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dream.rxjava.R;
+import com.dream.rxjava.rxjavaandroidsample.asynchttp.AsyncHttpFragment;
 import com.dream.rxjava.rxjavaandroidsample.rxbus.RxBusDemoFragment;
 import com.dream.rxjava.rxjavaandroidsample.volley.VolleyDemoFragment;
 
@@ -81,9 +82,10 @@ public class MainFragment extends BaseFragment {
             R.id.btn_demo_timing,
             R.id.btn_demo_exponential_backoff,
             R.id.btn_demo_rotation_persist,
-            R.id.btn_demo_volley,
             R.id.btn_demo_click,
-            R.id.btn_demo_RxSharedPreferences_RxBinding
+            R.id.btn_demo_RxSharedPreferences_RxBinding,
+            R.id.btn_demo_volley,
+            R.id.btn_demo_AndroidAsynchronousHttpClient
     })
     public void onClick(View view) {
         switch (view.getId()) {
@@ -127,14 +129,17 @@ public class MainFragment extends BaseFragment {
 //                clickedOn(new RotationPersist1Fragment());
                 clickedOn(new RotationPersist2Fragment());
                 break;
-            case R.id.btn_demo_volley:
-                clickedOn(new VolleyDemoFragment());
-                break;
             case R.id.btn_demo_click:
                 clickedOn(new ButtonClicksFragment());
                 break;
             case R.id.btn_demo_RxSharedPreferences_RxBinding:
                 clickedOn(new RxSharedPreferencesAndRxBindingFragment());
+                break;
+            case R.id.btn_demo_volley:
+                clickedOn(new VolleyDemoFragment());
+                break;
+            case R.id.btn_demo_AndroidAsynchronousHttpClient:
+                clickedOn(new AsyncHttpFragment());
                 break;
         }
     }
