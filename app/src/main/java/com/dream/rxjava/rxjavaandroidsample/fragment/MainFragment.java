@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.dream.rxjava.R;
 import com.dream.rxjava.rxjavaandroidsample.rxbus.RxBusDemoFragment;
+import com.dream.rxjava.rxjavaandroidsample.volley.VolleyDemoFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -124,6 +125,7 @@ public class MainFragment extends BaseFragment {
                 clickedOn(new RotationPersist2Fragment());
                 break;
             case R.id.btn_demo_volley:
+                clickedOn(new VolleyDemoFragment());
                 break;
         }
     }

@@ -3,6 +3,7 @@ package com.dream.rxjava;
 import android.app.Application;
 import android.content.Context;
 
+import com.dream.rxjava.rxjavaandroidsample.volley.MyVolley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -37,6 +38,9 @@ public class App extends Application {
         super.onCreate();
         mContext = getApplicationContext();
         mRefWatcher = LeakCanary.install(this);
+
+        // Initialize Volley
+        MyVolley.init(this);
 
         Timber.plant(new Timber.DebugTree());
 
