@@ -120,6 +120,8 @@ public class MainFragment extends BaseFragment {
                 clickedOn(new ExponentialBackoffFragment());
                 break;
             case R.id.btn_demo_rotation_persist:
+//                clickedOn(new RotationPersist1Fragment());
+                clickedOn(new RotationPersist2Fragment());
                 break;
             case R.id.btn_demo_volley:
                 break;

@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action0;
-import rx.observables.ConnectableObservable;
 import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
@@ -29,9 +29,9 @@ import timber.log.Timber;
  * Date:        16/4/1 下午6:19
  * Description: RxJavaDemo
  */
-public class RotationPersist1Fragment
+public class RotationPersist2Fragment
         extends BaseFragment
-        implements RotationPersist1WorkerFragment.IAmYourMaster {
+        implements RotationPersist2WorkerFragment.IAmYourMaster {
 
     public static final String FRAG_TAG = RotationPersist1WorkerFragment.class.getName();
 
@@ -45,10 +45,10 @@ public class RotationPersist1Fragment
         mLogAdapter.clear();
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
-        RotationPersist1WorkerFragment frag = (RotationPersist1WorkerFragment) fm.findFragmentByTag(FRAG_TAG);
+        RotationPersist2WorkerFragment frag = (RotationPersist2WorkerFragment) fm.findFragmentByTag(FRAG_TAG);
 
         if (frag == null) {
-            frag = new RotationPersist1WorkerFragment();
+            frag = new RotationPersist2WorkerFragment();
             fm.beginTransaction().add(frag, FRAG_TAG).commit();
         } else {
             Timber.d("Worker frag already spawned");
@@ -56,9 +56,9 @@ public class RotationPersist1Fragment
     }
 
     @Override
-    public void observeResults(ConnectableObservable<Integer> intsObservable) {
+    public void setStream(Observable<Integer> intStream) {
         mSubscription.add(
-                intsObservable.doOnSubscribe(new Action0() {
+                intStream.doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
                         log("Subscribing to intsObservable");
@@ -113,4 +113,6 @@ public class RotationPersist1Fragment
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
+
+
 }
