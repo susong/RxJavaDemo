@@ -81,7 +81,10 @@ public class MainFragment extends BaseFragment {
             R.id.btn_demo_timing,
             R.id.btn_demo_exponential_backoff,
             R.id.btn_demo_rotation_persist,
-            R.id.btn_demo_volley})
+            R.id.btn_demo_volley,
+            R.id.btn_demo_click,
+            R.id.btn_demo_RxSharedPreferences_RxBinding
+    })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_demo_schedulers:
@@ -126,6 +129,12 @@ public class MainFragment extends BaseFragment {
                 break;
             case R.id.btn_demo_volley:
                 clickedOn(new VolleyDemoFragment());
+                break;
+            case R.id.btn_demo_click:
+                clickedOn(new ButtonClicksFragment());
+                break;
+            case R.id.btn_demo_RxSharedPreferences_RxBinding:
+                clickedOn(new RxSharedPreferencesAndRxBindingFragment());
                 break;
         }
     }

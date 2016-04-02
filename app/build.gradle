@@ -60,6 +60,7 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0'
     compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
     compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0'
+    compile 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
 
     compile 'com.google.guava:guava:18.0'
     compile 'com.google.code.gson:gson:2.4'
@@ -68,7 +69,6 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
-
 
     compile 'com.jakewharton.timber:timber:2.4.2'
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'

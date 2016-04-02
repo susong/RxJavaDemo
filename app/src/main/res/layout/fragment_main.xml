@@ -83,7 +83,7 @@
             android:id="@+id/btn_demo_pseudo_cache_merge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pseudo cache using merge"
+            android:text="@string/btn_demo_pseudocache_merge"
             />
 
         <Button
@@ -113,5 +113,20 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_demo_volley"
             />
+
+        <Button
+            android:id="@+id/btn_demo_click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_demo_click"
+            />
+
+        <Button
+            android:id="@+id/btn_demo_RxSharedPreferences_RxBinding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_demo_RxSharedPreferences_RxBinding"
+            />
+
     </LinearLayout>
 </ScrollView>
